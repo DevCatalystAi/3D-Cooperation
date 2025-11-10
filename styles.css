@@ -144,7 +144,7 @@ nav ul li a:hover {
     font-weight: 700;
     opacity: 0;
     transform: translateY(30px);
-    animation: fadeInUp 1s ease-out forwards;
+    animation: fadeInUp 1s ease-out forwards, sway 4s ease-in-out 1s infinite, glow 3s ease-in-out 1s infinite;
 }
 
 .hero p {
@@ -207,7 +207,7 @@ nav ul li a:hover {
 
 .hero-image {
     position: absolute;
-    right: 0;
+    right: 20px;
     top: 50%;
     transform: translateY(-50%);
     z-index: 1;
@@ -218,10 +218,11 @@ nav ul li a:hover {
 .hero-image img {
     width: 100%;
     height: auto;
-    border-radius: 20px;
+    border-radius: 50%;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 184, 148, 0.5);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 5px solid rgba(255, 255, 255, 0.8);
+    object-fit: cover;
 }
 
 .hero-image img:hover {
@@ -232,6 +233,36 @@ nav ul li a:hover {
 @keyframes fadeInUp {
     to {
         opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes sway {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 5px rgba(0, 184, 148, 0.3), 0 0 10px rgba(0, 184, 148, 0.2), 0 0 15px rgba(0, 184, 148, 0.1);
+    }
+    50% {
+        text-shadow: 0 0 10px rgba(0, 184, 148, 0.5), 0 0 20px rgba(0, 184, 148, 0.3), 0 0 30px rgba(0, 184, 148, 0.2);
+    }
+}
+
+@keyframes bounceDown {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
         transform: translateY(0);
     }
 }
@@ -264,12 +295,28 @@ section:nth-child(even) {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.about-content div:hover {
+    background-color: #2E8B57;
+    color: #fff;
+    animation: bounceDown 0.5s ease;
 }
 
 .about-content h3 {
     color: #2E8B57;
     margin-bottom: 15px;
     font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.about-content div:hover h3 {
+    color: #fff;
+}
+
+.about-content div:hover p {
+    color: #fff;
 }
 
 .values ul {
